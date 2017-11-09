@@ -6,6 +6,13 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:32:56 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 14:32:56 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 14:38:14 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <get_next_line.h>
+
+t_i32   get_next_line(t_i32 const fd, t_car **line)
+{
+    return (0);
+}

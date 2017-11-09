@@ -16,7 +16,7 @@ set(CMAKE_C_FLAGS_RELEASE "")
 add_library(gnl get_next_line.c get_next_line.h)
 set_property(TARGET gnl PROPERTY C_STANDARD 90)
 target_include_directories(gnl PUBLIC ${gnl_INC_DIR})
-target_include_directories(gnl PUBLIC ft)
+target_link_libraries(gnl PUBLIC ft)
 
 target_compile_definitions(gnl
   PRIVATE $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:NDEBUG>
