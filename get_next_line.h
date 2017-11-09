@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 14:37:11 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 14:50:52 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #  define BUFF_SIZE 32
 # endif
 
-t_i32   get_next_line(t_i32 const fd, t_car **line);
+t_i32	get_next_line(t_i32 const fd, t_car **line);
 
 #endif
