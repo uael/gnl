@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_dstrpushncpy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:39 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:53:10 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 13:31:11 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <libft.h>
+inline t_car	*ft_dstrpushncpy(t_dstr *self, t_car const *b, t_usz n)
+{
+	t_car *it;
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	if (!(it = ft_dstrpushn(self, n)))
+		return (NULL);
+	ft_memcpy(it, b, n * sizeof(t_car));
+	return (it);
+}

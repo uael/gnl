@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:39 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 15:42:28 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <libft.h>
+inline t_i32	ft_atoi(t_car const *str)
+{
+	t_i64	result;
+	t_car	sign;
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	result = 0;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		++str;
+	if ((sign = *str) == '+' || sign == '-')
+		++str;
+	while (ft_isdigit(*str))
+		result = result * 10 + *str++ - '0';
+	return ((t_i32)(sign == '-' ? -result : result));
+}

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:39 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:14 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:44:26 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <libft.h>
+inline void	*ft_memrealloc(void *ptr, t_usz psz, t_usz sz)
+{
+	void *p;
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	if (!(p = malloc(sz)))
+		return (NULL);
+	if (!ptr)
+		return (p);
+	ft_memcpy(p, ptr, psz);
+	ft_memdel(&ptr);
+	return (p);
+}

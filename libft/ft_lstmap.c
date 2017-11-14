@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:39 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 12:42:36 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <libft.h>
+inline t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *))
+{
+	t_list	*beg;
+	t_list	*cur;
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	if (!lst || !f)
+		return (NULL);
+	beg = NULL;
+	cur = NULL;
+	while (lst)
+	{
+		if (beg)
+		{
+			cur->next = (*f)(lst);
+			cur = cur->next;
+		}
+		else
+		{
+			beg = (*f)(lst);
+			cur = beg;
+		}
+		lst = lst->next;
+	}
+	return (beg);
+}

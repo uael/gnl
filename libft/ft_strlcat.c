@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:52 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:39 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:53:05 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <libft.h>
+t_usz	ft_strlcat(t_car *dest, t_car const *src, t_usz size)
+{
+	t_usz	slen;
+	t_usz	dlen;
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	slen = (t_usz)ft_strlen(src);
+	dlen = (t_usz)ft_strnlen(dest, size);
+	if (dlen == size)
+		return (size + slen);
+	if (slen < size - dlen)
+		ft_strncpy(dest + dlen, src, slen + 1);
+	else
+	{
+		ft_strncpy(dest + dlen, src, size - dlen - 1);
+		dest[size - 1] = '\0';
+	}
+	return (dlen + slen);
+}
