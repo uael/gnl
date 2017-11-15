@@ -19,7 +19,8 @@ int	get_next_line(int const fd, char **line)
 	ssize_t			i;
 	char			*eol;
 
-	if (!line || fd < (int)(eol = NULL))
+	eol = NULL;
+	if (!line || fd < 0)
 		return (-1);
 	while ((!c[fd].len || (eol || !(eol = ft_strchr(c[fd].buf, '\n')))))
 		if ((i = read(fd, b, BUFF_SIZE)) == 0)
@@ -28,7 +29,7 @@ int	get_next_line(int const fd, char **line)
 			return (-1);
 		else if ((eol = ft_strchr(eol, '\n')))
 			break ;
-	if (!(i = eol ? (eol - c[fd].buf + 1) : c[fd].len))
+	if (!(i = eol ? (eol - c[fd].buf + 1) : (ssize_t)c[fd].len))
 		return (0);
 	if (!(*line = malloc((size_t)(i + (eol ? 1 : 0)) * sizeof(char))))
 		return (-1);
