@@ -14,7 +14,7 @@
 
 int	get_next_line(int const fd, char **line)
 {
-	static t_dstr	c[INT32_MAX];
+	static t_dstr	c[2147483648];
 	char			b[BUFF_SIZE + 1];
 	ssize_t			i;
 	char			*eol;
