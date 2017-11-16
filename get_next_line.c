@@ -15,7 +15,7 @@
 int	get_next_line(int const fd, char **line)
 {
 	static t_dstr	c[INT32_MAX];
-	char			b[BUFF_SIZE];
+	char			b[BUFF_SIZE + 1];
 	ssize_t			i;
 	char			*eol;
 
@@ -25,7 +25,7 @@ int	get_next_line(int const fd, char **line)
 	while ((!c[fd].len || (eol || !(eol = ft_strchr(c[fd].buf, '\n')))))
 		if ((i = read(fd, b, BUFF_SIZE)) == 0)
 			break ;
-		else if (i == -1 || !(eol = ft_dstrpushncpy(c + fd, b, (size_t)i)))
+		else if (i == -1 || !(eol = ft_dstr_pushnc(c + fd, b, (size_t)i)))
 			return (-1);
 		else if ((eol = ft_strchr(eol, '\n')))
 			break ;
@@ -33,6 +33,6 @@ int	get_next_line(int const fd, char **line)
 		return (0);
 	if (!(*line = malloc((size_t)(i + (eol ? 1 : 0)) * sizeof(char))))
 		return (-1);
-	(*line)[ft_dstrshtn(c + fd, (size_t)i, *line) - (eol ? 1 : 0)] = '\0';
+	(*line)[ft_dstr_shiftn(c + fd, (size_t)i, *line) - (eol ? 1 : 0)] = '\0';
 	return (1);
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_dstr_dtor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:23:29 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft/ds/dstr.h"
 
-# include "libft/ctype.h"
-# include "libft/ds.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+inline void	ft_dstr_dtor(t_dstr *self, void (*idtor)(char *i))
+{
+	char	*item;
 
-#endif
+	if (self->buf)
+	{
+		if (idtor)
+		{
+			item = ft_dstr_begin(self);
+			while (item != ft_dstr_end(self))
+				idtor(item++);
+		}
+		free(self->buf);
+	}
+	FT_INIT(self, t_dstr);
+}

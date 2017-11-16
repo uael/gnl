@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_dstr_ensure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:23:29 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft/ds/dstr.h"
 
-# include "libft/ctype.h"
-# include "libft/ds.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
-
-#endif
+inline t_bool	ft_dstr_ensure(t_dstr *self, size_t n)
+{
+	if (++n < FT_DSTR_MIN_CAP && FT_DSTR_MIN_CAP > self->cap)
+		return (ft_dstr_realloc(self, FT_DSTR_MIN_CAP));
+	else if (n > self->cap)
+		return (ft_dstr_realloc(self, ISPOW2(n) ? n : pow2_next(n)));
+	return (1);
+}

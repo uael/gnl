@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_vu_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:23:29 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft/ds/vec.h"
 
-# include "libft/ctype.h"
-# include "libft/ds.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+inline uint8_t	*ft_vu8_at(t_vu8 *self, size_t idx)
+{
+	return (ft_vu8_begin(self) + idx);
+}
 
-#endif
+inline uint16_t	*ft_vu16_at(t_vu16 *self, size_t idx)
+{
+	return (ft_vu16_begin(self) + idx);
+}
+
+inline uint32_t	*ft_vu32_at(t_vu32 *self, size_t idx)
+{
+	return (ft_vu32_begin(self) + idx);
+}
+
+inline uint64_t	*ft_vu64_at(t_vu64 *self, size_t idx)
+{
+	return (ft_vu64_begin(self) + idx);
+}

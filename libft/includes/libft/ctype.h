@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft/ctype.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,16 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_CTYPE_H
+# define LIBFT_CTYPE_H
 
-# include "libft/ctype.h"
-# include "libft/ds.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+extern int	ft_isalnum(int c);
+extern int	ft_isascii(int c);
+extern int	ft_isalpha(int c);
+extern int	ft_isdigit(int c);
+extern int	ft_islower(int c);
+extern int	ft_isprint(int c);
+extern int	ft_isupper(int c);
+extern int	ft_isspace(int c);
+
+extern int	ft_tolower(int c);
+extern int	ft_toupper(int c);
 
 #endif

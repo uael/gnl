@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_vu_unshiftn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:23:29 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft/ds/vec.h"
 
-# include "libft/ctype.h"
-# include "libft/ds.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+inline uint8_t	*ft_vu8_unshift(t_vu8 *self)
+{
+	return (ft_vu8_unshiftn(self, 1));
+}
 
-#endif
+inline uint16_t	*ft_vu16_unshift(t_vu16 *self)
+{
+	return (ft_vu16_unshiftn(self, 1));
+}
+
+inline uint32_t	*ft_vu32_unshift(t_vu32 *self)
+{
+	return (ft_vu32_unshiftn(self, 1));
+}
+
+inline uint64_t	*ft_vu64_unshift(t_vu64 *self)
+{
+	return (ft_vu64_unshiftn(self, 1));
+}
